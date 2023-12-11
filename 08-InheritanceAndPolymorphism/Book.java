@@ -1,13 +1,15 @@
 public class Book {
 
     private String title;
-    private String author;
+    private Writer author;
     private Publisher publisher;
+    private int yearOfPublication;
 
-    public Book(String title, String author, Publisher publisher) {
+    public Book(String title, Writer author, Publisher publisher, int yearOfPublication) {
         this.title = title;
         this.author = author;
         this.publisher = publisher;
+        this.yearOfPublication = yearOfPublication;
     }
 
     public void setTitle(String title) {
@@ -18,11 +20,11 @@ public class Book {
         return title;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(Writer author) {
         this.author = author;
     }
 
-    public String getAuthor() {
+    public Writer getAuthor() {
         return author;
     }
 
@@ -34,15 +36,26 @@ public class Book {
         this.publisher = publisher;
     }
 
+    public int getYearOfPublication() {
+        return yearOfPublication;
+    }
+
+    public void setYearOfPublication(int yearOfPublication) {
+        this.yearOfPublication = yearOfPublication;
+    }
+
     public String display() {
-        return "Book: '" + title + "' \nAuthor: " + author + "\nPublisher: " + publisher.getName() + ", " + publisher.getCity();
+        return "Book: '" + title + "' \nAuthor: {\n" + author + " }\nDate of publication: " 
+        + "\nPublisher: " + publisher;
     }
 
     public static void main(String[] args) {
         Publisher publisher = new Publisher("Grove Atlantic", "New York City");
         Publisher publisher2 = new Publisher("Harper Voyager", "New York City");
-        Book book = new Book("World of warcraft:Przebudzenie króla lisza", "Christie Golden", publisher);
-        Book book2 = new Book("Pan Tadeusz", "Adam Mickiewicz", publisher2);
+        Writer author1 = new Writer("Adam", "Mickiewicz", "Drama");
+        Writer author2 = new Writer("Christie", "Golden", "Fantasy");
+        Book book = new Book("World of warcraft:Przebudzenie króla lisza", author2, publisher, 2012);
+        Book book2 = new Book("Pan Tadeusz", author1 , publisher2, 2013);
         System.out.println(book.display());
         System.out.println(book2.display());
     }

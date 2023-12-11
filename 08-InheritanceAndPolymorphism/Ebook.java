@@ -2,8 +2,8 @@ public class Ebook extends Book {
     
     private String fileName;
 
-    public Ebook(String fileName, String title, String author, Publisher publisher) {
-        super(title, author, publisher);
+    public Ebook(String fileName, String title, Writer author, Publisher publisher, int yearOfPublication) {
+        super(title, author, publisher, yearOfPublication);
         this.fileName = fileName;
     }
 
@@ -16,18 +16,19 @@ public class Ebook extends Book {
     }
 
     public String display() {
-        return "Ebook: '" + getTitle() +"'\nAuthor: " + getAuthor() + "\nFile name: " + fileName;
+        return "Ebook: '" + getTitle() + "\nAuthor: {\n" + getAuthor() + " }\nFile name: " + fileName + "\nPublisher: " + getPublisher();
     }
 
     public static void main(String[] args) {
         Publisher publisher = new Publisher("Grove Atlantic", "New York City");
         Publisher publisher2 = new Publisher("Harper Voyager", "New York City");
-        Book book = new Book("World of warcraft:Przebudzenie króla lisza", "Christie Golden", publisher);
-        Ebook ebook = new Ebook(book.getTitle() + ".mobi", book.getTitle(), book.getAuthor(), publisher);
-        Ebook ebook2 = new Ebook(book.getTitle() + ".pdf", book.getTitle(), book.getAuthor(), publisher2);
+        Writer author = new Writer("Christie", "Golden", "Fantasy");
+        Book book = new Book("World of warcraft:Przebudzenie króla lisza", author, publisher, 2012);
+        Ebook ebook = new Ebook(book.getTitle() + ".mobi", book.getTitle(), book.getAuthor(), publisher, 2013);
+        Ebook ebook2 = new Ebook(book.getTitle() + ".pdf", book.getTitle(), book.getAuthor(), publisher2, 2009);
 
         System.out.println(book.display());
         System.out.println(ebook.display());
         System.out.println(ebook2.display());
     }
-}
+} 

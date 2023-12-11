@@ -23,4 +23,11 @@ public class Publisher {
     public void setCity(String city) {
         this.city = city;
     }
+
+    @Override
+    public String toString() {
+        return name  + city;
+    }
+
+    
 }
